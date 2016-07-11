@@ -1,0 +1,521 @@
+html, body { 
+	background-color: #33333300; 
+	color:#000000;
+}
+body {
+	 margin:0; 
+	 padding:0; 
+	 overflow:hidden; 
+	 width:1920px; 
+	 height:1080px;	 	 
+}
+#deathCounterContainer { 
+	position: absolute;
+	top: 600px;
+	left: -435px;
+	width: 1400px;
+	height: 250px;
+	padding: 30px 0 0 80px;
+	transform: scale(0.45) perspective(1200px) rotateX(22.3deg) rotateY(58.7deg) rotateZ(-25deg);
+	perspective-origin: 800px 450px;
+	background-image: url(/img/deathClockBackground.png);
+	background-origin: top left;
+	background-size: 682px 250px;
+	background-repeat: no-repeat;
+	z-index: 8;			
+}
+
+/*-------------
+  Death Counter 
+  -------------*/
+#deathCounter {	
+	position: absolute;
+	display:block;
+	height:80px;
+	margin-left: 120px;
+	font-family: Press Start K;
+	font-size: 80px;
+	color: #FFFFFF;	
+	background: linear-gradient(0deg, 
+				#FFFFFF 0%,
+				#BBBBBB 49%,
+				#DDDDDD 51%,
+				#FFFFFF 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+#deathCounter:before {
+	content: attr(data-value);
+	position: absolute;
+	color: #888888;
+	text-shadow: 10px 10px 0 black,
+				 -2px 2px 0 black,
+				 -2px -2px 0 black,
+				 2px -2px 0 black,
+				 0px 2px 0 black,
+				 2px 0px 0 black;
+	mix-blend-mode: hard-light;
+	-webkit-text-fill-color: initial;
+}
+
+/*-------------
+  Stats Display 
+  -------------*/
+#statsContainer{
+	width: 1200px;
+	height: 100px;
+	margin-top: 90px;
+	overflow: hidden;
+	-webkit-mask: url(/img/mask.png);
+}
+.statsItem{
+	display: block;
+	padding: 6px;
+	height: 100px;
+}
+.deathStats {
+	display: block;
+	font-family: Press Start K;
+	font-size: 40px;
+	height: 40px;
+	text-align: left;
+	margin: 2px;
+	background: linear-gradient(0deg, #E00000 10%, #AD0000 49%, #FF5959 51%, #FF0000 90%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+.deathStats:before {
+	content: attr(data-value);
+	position: absolute;
+	color: #888888;
+	text-shadow: 5px 5px 0 black,
+				 2px 2px 0px black,
+				 -2px 2px 0px black,
+				 -2px -2px 0px black,
+				 2px -2px 0px black;
+	mix-blend-mode: hard-light;
+	-webkit-text-fill-color: initial;
+}
+.lastDeathDate {
+	display: block;
+	height: 40px;
+	width: 1194px;
+	padding-left: 10px;
+	background: linear-gradient(0deg, #E00000 10%, #AD0000 49%, #FF5959 51%, #FF0000 90%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+.lastDeathDate:before {
+	content: attr(data-value);
+	position: absolute;
+	color: #888888;
+	text-shadow: 5px 5px 0 black,
+				 2px 2px 0px black,
+				 -2px 2px 0px black,
+				 -2px -2px 0px black,
+				 2px -2px 0px black;
+	mix-blend-mode: hard-light;
+	-webkit-text-fill-color: initial;
+}
+#lastDeaths>.lineTwo{
+	position: relative;
+	left: -10px;
+
+	
+}
+
+/*--------------
+  Laughing Skull 
+  --------------*/
+#skullContainer {
+	display: block;
+	position: absolute;
+	top: 10px;
+	float: left;
+	height: 120px;
+	width: 96px;
+	z-index: 9;
+	cursor: pointer;
+}
+#skullTop {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	display: block;
+	width: 96px;
+	height: 96px;
+	background-image: url(/img/skull.gif);
+	background-position: 0px 0px;
+	background-repeat: no-repeat;
+	z-index: 12;
+}
+#skullJaw {
+	position: absolute;
+	top: 60px;
+	left: 0px;
+	display: block;
+	width: 96px;
+	height: 48px;
+	background-image: url(/img/skull.gif);
+	background-position: 0px -96px;
+	background-repeat: no-repeat;
+	z-index: 11;
+}
+#skullEyes {
+	position: absolute;
+	top: 18px;
+	left: 0px;
+	display: block;
+	width: 96px;
+	height: 48px;
+	background-image: url(/img/skull.gif);
+	background-position: -144px 0px;
+	background-repeat: no-repeat;
+	z-index: 13;
+}
+#skullMouth {
+	position: absolute;
+	top: 84px;
+	left: 24px;
+	display: block;
+	width: 48px;
+	height: 48px;
+	background-image: url(/img/skull.gif);
+	background-position: -96px 0px;
+	background-repeat: no-repeat;
+	z-index: 10;
+}
+
+/*---------------
+  Blood Animation 
+  ---------------*/
+#bloodContainer {
+	transform: scale(1.5) translate(250px,-250px);
+}
+@keyframes splat{
+	from {-webkit-clip-path: ellipse(125px 75px at 668px 235px);}
+	to {-webkit-clip-path: ellipse(427px 376px at 389px 235px);}
+}
+#blood-a {
+	position: absolute;
+	top: 395px;
+	left: 12px;
+	display: block;
+	width: 778px;
+	height: 593px;
+	background-image: url('/img/blood splatter 1b.png');
+	background-repeat: no-repeat;
+	transform: rotate(170deg);
+	z-index: 5;
+	visibility:hidden;
+}
+#blood-a.splat{
+	animation: splat 0.25s ease-out 1;
+	visibility:visible;
+}
+@keyframes fade-in {
+	from {opacity:0;}
+	to {opacity:1;}
+}
+@keyframes fade-out {
+	from {opacity:1; visibility:visible;}
+	to {opacity:0; visibility:hidden;}
+}
+#blood-b {
+	position: absolute;
+	top: 182px;
+	left: -81px;
+	display: block;
+	width: 1024px;
+	height: 921px;
+	background-image: url('/img/blood splatter 2.png');
+	background-position: -96px 0px;
+	background-origin: top left;
+	background-repeat: no-repeat;
+	transform: rotate(-63deg) scale(0.7);
+	z-index: 4;	
+	visibility:hidden;		
+}
+#blood-b.fade-in {
+	animation: fade-in 0.5s linear 1;	
+	opacity: 1;	
+	visibility:visible;	
+}
+@keyframes blood-dripping {
+	from {height: 10px;}
+	to {height: 100px;}
+}
+.blood-drip {
+	position: absolute;
+	display: block;				
+	background-color: #770303;
+	width: 10px;
+	height: 10px;
+	z-index: 3;
+	border-radius: 5px;
+	visibility:hidden;
+}
+.blood-drip.blood-dripping {
+	animation: blood-dripping 10s ease-out 1;
+	height: 100px;
+	visibility:visible;		
+}
+
+.fade-out {
+	animation: fade-out 1s linear 1;
+}
+
+/*---------
+  Milestone 
+  ---------*/
+@keyframes milestoneNumber {
+	0% {transform: rotateX(-60deg) translateY(2000px);}
+	10% {transform: rotateX(-60deg) translateY(100px);}
+	90% {transform: rotateX(20deg) translateY(100px);}
+	97% {transform: rotateX(20deg) translateY(100px);}
+	100% {transform: rotateX(20deg) translateY(-500px);}
+}			
+
+@keyframes milestoneShadow {
+	0% {transform: rotateX(-60deg) translateY(2000px) translateZ(-21px) scale(1.013);}
+	10% {transform: rotateX(-60deg) translateY(100px) translateZ(-21px) scale(1.013);}
+	90% {transform: rotateX(20deg) translateY(100px) translateZ(-21px) scale(1.026);}
+	97% {transform: rotateX(20deg) translateY(100px) translateZ(-21px) scale(1.026);}
+	100% {transform: rotateX(20deg) translateY(-500px) translateZ(-21px) scale(1.026);}
+}
+
+@keyframes milestoneLuster {
+	0% {background-position: 0px -1240px;}
+	10% {background-position: 0px -920px;}
+	90% {background-position: 0px -150px;}
+	97% {background-position: 0px -150px;}
+	100% {background-position: 0px 0px;}
+}
+
+#milestoneContainer { 
+	position: absolute;
+	display:block;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;			
+	perspective-origin: 50% 100%;
+	perspective: 1200px;
+	z-index: 20;			
+}
+.milestoneNumber {
+	position: absolute;
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+	font-family: Press Start K;
+	font-size: 400px;
+	color: #FFFFFF;
+	transform: rotateX(-60deg) translateY(-500px);
+	text-shadow: -2px 2px 0 black,
+				 -2px -2px 0 black,
+				 2px -2px 0 black,
+				 2px 2px 0 black;
+	z-index: 22;
+	animation: milestoneNumber 10s ease-out 1;
+}
+.milestoneNumber span{
+	background: linear-gradient(0deg, 
+				#141208 0%,
+				#484120 10%,
+				#595128 15%,
+				#252110 20%,
+				#252110 21%,
+				#453F1F 22%,
+				#5F572A 27%,
+				#9F9047 32%,
+				#867A3C 38%,
+				#C4B257 48%,
+				#CEBF74 53%,
+				#A99A4B 56%,
+				#C5B358 61%,
+				#E8E1BD 75%,
+				#F5F2E3 76%,
+				#E5DEB6 87%,
+				#F5F2E3 95%,
+				#FFFFFF 100%);
+	background-size: 500%;
+	background-position: 0px 0px;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	text-shadow: none;
+	animation: milestoneLuster 10s ease-out;
+}
+.milestoneNumber.shadow {
+	color: #000000;
+	/*transform-origin: 50% 52% 11px;*/
+	z-index: 21;
+	animation: milestoneShadow 10s ease-out;
+}
+.milestoneNumber.outline {
+	mix-blend-mode: darken;
+}
+
+#fireworks {
+	/*position:absolute;*/
+	width:100%;
+	height:100%;
+	z-index:2;
+	/*background-blend-mode: screen;*/
+	/*background-color: $FF0000;*/
+	opacity:0.5;
+}
+
+.hide{
+	display: none !important;
+}
+
+/*--------------
+  Directory Menu
+  --------------*/
+
+#directoryMenu{
+	display: block;
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	z-index: 100;
+}
+#directoryMenu ul{
+	display: inline-block;
+	background-color: #22CC44;
+	background-blend-mode: hard-light;
+	border: 10px outset #14E23D;
+	padding: 20px;
+	height: 800px;
+}
+#directoryMenu ul li{
+	display: block;
+	cursor: pointer;
+	border: 5px outset #14E23D;
+	width: 800px;
+	padding: 20px;
+	font-family: Press Start K;
+	font-size: 40px;
+	height: 40px;
+	text-align: left;
+	background: linear-gradient(0deg, #E00000 10%, #AD0000 49%, #FF5959 51%, #FF0000 90%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+#directoryMenu ul li:hover{
+	background: linear-gradient(0deg, #E0E000 10%, #ADAD00 49%, #FFFF59 51%, #FFFF00 90%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+#directoryMenu ul li:before {
+	content: attr(data-label);
+	position: absolute;
+	color: #888888;
+	text-shadow: 5px 5px 0 black,
+				 2px 2px 0px black,
+				 -2px 2px 0px black,
+				 -2px -2px 0px black,
+				 2px -2px 0px black;
+	mix-blend-mode: hard-light;
+	-webkit-text-fill-color: initial;
+}
+#directoryMenu ul li:after {
+	content: attr(data-total);
+	float: right;
+	color: #FFFFFF;
+	background:none;
+	text-shadow: 5px 5px 0 black,
+				 2px 2px 0px black,
+				 -2px 2px 0px black,
+				 -2px -2px 0px black,
+				 2px -2px 0px black;
+	-webkit-text-fill-color: initial;
+}
+#directoryMenu ul li input{
+	width: 100%;
+	font-family: Press Start K;
+    font-size: 40px;
+    color: black;
+    background-color: #11D438;
+    border: 5px inset #14E23D;
+    -webkit-background-clip: initial;
+    -webkit-text-fill-color: initial;
+}
+
+/*-------------
+  Quest Display
+  -------------*/
+
+#questContainer{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 2;
+}
+.questRow{
+	position:relative;
+	width:100%;
+	height:20px;
+	top:100%;
+	margin-top:-20px;
+	text-align:center;
+	font-family: Press Start K;
+	font-size: 20px;
+	transform: perspective(1200px) rotateX(45deg);
+}
+#questDisplay{
+	cursor:pointer;
+}
+#questLabel{
+	display: inline-block;
+	background: linear-gradient(0deg, #E00000 10%, #AD0000 49%, #FF5959 51%, #FF0000 90%);
+	text-transform:uppercase;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+#questLabel:before {
+	content: attr(data-value);
+	position: absolute;
+	color: #888888;
+	text-shadow: 2.5px 2.5px 0 black,
+				 1px 1px 0px black,
+				 -1px 1px 0px black,
+				 -1px -1px 0px black,
+				 1px -1px 0px black;
+	mix-blend-mode: hard-light;
+	-webkit-text-fill-color: initial;
+}
+
+#questTimer{
+	display: inline-block;
+	background: linear-gradient(0deg, #FFFFFF 0%, #BBBBBB 49%, #DDDDDD 51%, #FFFFFF 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+#questTimer:before {
+	content: attr(data-value);
+	position: absolute;
+	color: #888888;
+	text-shadow: 2.5px 2.5px 0 black,
+				 1px 1px 0px black,
+				 -1px 1px 0px black,
+				 -1px -1px 0px black,
+				 1px -1px 0px black;
+	mix-blend-mode: hard-light;
+	-webkit-text-fill-color: initial;
+}
+#newQuest{
+	width: 100%;
+    border: none;
+    outline: none;
+    font-family: Press Start K;
+	font-size: 20px;
+	text-align: center;
+	color: #FF0000;
+	text-shadow: 2.5px 2.5px 0 black,
+				 1px 1px 0px black,
+				 -1px 1px 0px black,
+				 -1px -1px 0px black,
+				 1px -1px 0px black;
+}
